@@ -11,6 +11,7 @@
 		83EBD8FA273B69A000E3FA75 /* SDL_Plotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */; };
 		83FBE298273BD484004DDEF1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C7B8BE273BC83B009FB9A9 /* libSDL2-2.0.0.dylib */; };
 		83FBE299273BD4BA004DDEF1 /* libSDL_mixer-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C7B8C0273BC87D009FB9A9 /* libSDL_mixer-1.2.0.dylib */; };
+		83FBE29D273C1DB7004DDEF1 /* SDL_Tester.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		83EBD8F1273B690200E3FA75 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		83EBD8F2273B690200E3FA75 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
 		83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Plotter.cpp; sourceTree = "<group>"; };
+		83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Tester.cpp; sourceTree = "<group>"; };
+		83FBE29E273C1E12004DDEF1 /* SDL_Tester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDL_Tester.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 			children = (
 				83EBD8EF273B688800E3FA75 /* SDL_Plotter.h */,
 				83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */,
+				83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */,
+				83FBE29E273C1E12004DDEF1 /* SDL_Tester.h */,
 			);
 			path = SDL_Plotter;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83FBE29D273C1DB7004DDEF1 /* SDL_Tester.cpp in Sources */,
 				83EBD8FA273B69A000E3FA75 /* SDL_Plotter.cpp in Sources */,
 				836F5C2E273B619500F5A5E7 /* main.cpp in Sources */,
 			);
