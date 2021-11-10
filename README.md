@@ -3,6 +3,7 @@
 UPDATE 11/10/2021
 Folder is setted up.
 Game function, File needed(.h&.cpp): Color(R,G,B), Point(x,y), Ball(..), Force(), Score()...
+
 The following is the expected main.
 ```
 Game game;
