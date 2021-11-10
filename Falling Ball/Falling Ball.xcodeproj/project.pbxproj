@@ -33,7 +33,7 @@
 		83EBD8EF273B688800E3FA75 /* SDL_Plotter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDL_Plotter.h; sourceTree = "<group>"; };
 		83EBD8F1273B690200E3FA75 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		83EBD8F2273B690200E3FA75 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
-		83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SDL_Plotter.cpp; path = Source/SDL_Plotter.cpp; sourceTree = "<group>"; };
+		83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Plotter.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +69,8 @@
 		836F5C2C273B619500F5A5E7 /* Falling Ball */ = {
 			isa = PBXGroup;
 			children = (
+				83FBE29A273BD6E8004DDEF1 /* SDL_Plotter */,
 				83EBD8EB273B67F200E3FA75 /* Source */,
-				83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */,
 				83EBD8EA273B67E500E3FA75 /* Header */,
 				836F5C2D273B619500F5A5E7 /* main.cpp */,
 			);
@@ -80,7 +80,6 @@
 		83EBD8EA273B67E500E3FA75 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				83EBD8EF273B688800E3FA75 /* SDL_Plotter.h */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -101,6 +100,15 @@
 				83EBD8F1273B690200E3FA75 /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83FBE29A273BD6E8004DDEF1 /* SDL_Plotter */ = {
+			isa = PBXGroup;
+			children = (
+				83EBD8EF273B688800E3FA75 /* SDL_Plotter.h */,
+				83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */,
+			);
+			path = SDL_Plotter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
