@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		836F5C2E273B619500F5A5E7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 836F5C2D273B619500F5A5E7 /* main.cpp */; };
-		83EBD8F3273B690200E3FA75 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EBD8F1273B690200E3FA75 /* SDL2.framework */; };
-		83EBD8F4273B690200E3FA75 /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83EBD8F1273B690200E3FA75 /* SDL2.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		83EBD8F5273B690200E3FA75 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EBD8F2273B690200E3FA75 /* SDL2_mixer.framework */; };
-		83EBD8F6273B690200E3FA75 /* SDL2_mixer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83EBD8F2273B690200E3FA75 /* SDL2_mixer.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		83EBD8FA273B69A000E3FA75 /* SDL_Plotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */; };
+		83FBE298273BD484004DDEF1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C7B8BE273BC83B009FB9A9 /* libSDL2-2.0.0.dylib */; };
+		83FBE299273BD4BA004DDEF1 /* libSDL_mixer-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C7B8C0273BC87D009FB9A9 /* libSDL_mixer-1.2.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,23 +23,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		83EBD8F7273B690200E3FA75 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				83EBD8F4273B690200E3FA75 /* SDL2.framework in Embed Frameworks */,
-				83EBD8F6273B690200E3FA75 /* SDL2_mixer.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		836F5C2A273B619500F5A5E7 /* Falling Ball */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Falling Ball"; sourceTree = BUILT_PRODUCTS_DIR; };
 		836F5C2D273B619500F5A5E7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		83C7B8BE273BC83B009FB9A9 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl2/2.0.16/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		83C7B8C0273BC87D009FB9A9 /* libSDL_mixer-1.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL_mixer-1.2.0.dylib"; path = "../../../../../../usr/local/Cellar/sdl_mixer/1.2.12_4/lib/libSDL_mixer-1.2.0.dylib"; sourceTree = "<group>"; };
 		83EBD8EF273B688800E3FA75 /* SDL_Plotter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDL_Plotter.h; sourceTree = "<group>"; };
 		83EBD8F1273B690200E3FA75 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		83EBD8F2273B690200E3FA75 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
@@ -53,8 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83EBD8F3273B690200E3FA75 /* SDL2.framework in Frameworks */,
-				83EBD8F5273B690200E3FA75 /* SDL2_mixer.framework in Frameworks */,
+				83FBE299273BD4BA004DDEF1 /* libSDL_mixer-1.2.0.dylib in Frameworks */,
+				83FBE298273BD484004DDEF1 /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +95,8 @@
 		83EBD8F0273B690200E3FA75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83C7B8C0273BC87D009FB9A9 /* libSDL_mixer-1.2.0.dylib */,
+				83C7B8BE273BC83B009FB9A9 /* libSDL2-2.0.0.dylib */,
 				83EBD8F2273B690200E3FA75 /* SDL2_mixer.framework */,
 				83EBD8F1273B690200E3FA75 /* SDL2.framework */,
 			);
@@ -123,7 +113,6 @@
 				836F5C26273B619500F5A5E7 /* Sources */,
 				836F5C27273B619500F5A5E7 /* Frameworks */,
 				836F5C28273B619500F5A5E7 /* CopyFiles */,
-				83EBD8F7273B690200E3FA75 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,7 +129,7 @@
 		836F5C22273B619500F5A5E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					836F5C29273B619500F5A5E7 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -292,10 +281,18 @@
 		836F5C32273B619500F5A5E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.16/lib,
+					/usr/local/Cellar/sdl_mixer/1.2.12_4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -304,10 +301,18 @@
 		836F5C33273B619500F5A5E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.16/lib,
+					/usr/local/Cellar/sdl_mixer/1.2.12_4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
