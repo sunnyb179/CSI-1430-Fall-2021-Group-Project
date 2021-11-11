@@ -7,14 +7,21 @@
 
 #include "Game.h"
 
+SDL_Plotter screen(WINDOW_X_SIZE,WINDOW_Y_SIZE);
 
 void game::init(){
     gameOverStatus=false;
 }
 
 void game::play(){
-    SDL_Plotter screen(WINDOW_X_SIZE,WINDOW_Y_SIZE);
-    startingScreen(screen);
+    while(!screen.getQuit()){
+        if(screen.kbhit())
+        {
+            screen.getKey();
+        }
+    
+        startingScreen(screen);
+    }
 }
 
 void game::update(){
