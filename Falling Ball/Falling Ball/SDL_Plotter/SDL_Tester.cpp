@@ -19,7 +19,7 @@ void tester()
     while (!g.getQuit())
     {
         if(!stopped){
-                x = rand()%g.getCol();
+            x = rand()%g.getCol();
             y = rand()%g.getRow();
             R = rand()%256;
             G = rand()%256;

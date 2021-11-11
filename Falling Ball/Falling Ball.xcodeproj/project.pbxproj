@@ -12,6 +12,9 @@
 		83FBE298273BD484004DDEF1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C7B8BE273BC83B009FB9A9 /* libSDL2-2.0.0.dylib */; };
 		83FBE299273BD4BA004DDEF1 /* libSDL_mixer-1.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C7B8C0273BC87D009FB9A9 /* libSDL_mixer-1.2.0.dylib */; };
 		83FBE29D273C1DB7004DDEF1 /* SDL_Tester.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */; };
+		83FBE2BD273C73D0004DDEF1 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83FBE2BB273C73D0004DDEF1 /* Game.cpp */; };
+		83FBE2C2273C8506004DDEF1 /* startingScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83FBE2C0273C8506004DDEF1 /* startingScreen.cpp */; };
+		83FBE2C6273C890B004DDEF1 /* Objects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83FBE2C4273C890A004DDEF1 /* Objects.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +40,13 @@
 		83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Plotter.cpp; sourceTree = "<group>"; };
 		83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Tester.cpp; sourceTree = "<group>"; };
 		83FBE29E273C1E12004DDEF1 /* SDL_Tester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDL_Tester.h; sourceTree = "<group>"; };
+		83FBE2BA273C73BD004DDEF1 /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		83FBE2BB273C73D0004DDEF1 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		83FBE2BF273C84F3004DDEF1 /* startingScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = startingScreen.h; sourceTree = "<group>"; };
+		83FBE2C0273C8506004DDEF1 /* startingScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = startingScreen.cpp; sourceTree = "<group>"; };
+		83FBE2C3273C88F7004DDEF1 /* Objects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Objects.h; sourceTree = "<group>"; };
+		83FBE2C4273C890A004DDEF1 /* Objects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Objects.cpp; sourceTree = "<group>"; };
+		83FBE2C7273C960D004DDEF1 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,10 @@
 		83EBD8EA273B67E500E3FA75 /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				83FBE2BA273C73BD004DDEF1 /* Game.h */,
+				83FBE2BF273C84F3004DDEF1 /* startingScreen.h */,
+				83FBE2C3273C88F7004DDEF1 /* Objects.h */,
+				83FBE2C7273C960D004DDEF1 /* Data.h */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -90,6 +104,9 @@
 		83EBD8EB273B67F200E3FA75 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				83FBE2BB273C73D0004DDEF1 /* Game.cpp */,
+				83FBE2C0273C8506004DDEF1 /* startingScreen.cpp */,
+				83FBE2C4273C890A004DDEF1 /* Objects.cpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -172,9 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83FBE2C6273C890B004DDEF1 /* Objects.cpp in Sources */,
 				83FBE29D273C1DB7004DDEF1 /* SDL_Tester.cpp in Sources */,
 				83EBD8FA273B69A000E3FA75 /* SDL_Plotter.cpp in Sources */,
 				836F5C2E273B619500F5A5E7 /* main.cpp in Sources */,
+				83FBE2C2273C8506004DDEF1 /* startingScreen.cpp in Sources */,
+				83FBE2BD273C73D0004DDEF1 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,11 +6,15 @@
 // Date Last Modified: 11/10/2020
 
 
-#include "SDL_Plotter.h"
-
-#include "SDL_Tester.h"
+#include "Game.h"
  
 int main(){
-    tester();
+    game Game;
+    Game.init();
+    Game.play();
+    //while(!Game.over())
+    //{
+    //    Game.update();
+    //}
     return 0;
 }
