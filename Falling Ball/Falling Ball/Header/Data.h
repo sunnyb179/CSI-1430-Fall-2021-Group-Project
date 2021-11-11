@@ -10,7 +10,7 @@
 
 #include<iostream>
 
-const int WINDOW_X_SIZE=350;
-const int WINDOW_Y_SIZE=600;
+const int WINDOW_X_SIZE=600;
+const int WINDOW_Y_SIZE=350;
 
 #endif /* Data_h */
