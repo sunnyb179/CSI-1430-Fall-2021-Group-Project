@@ -1,12 +1,18 @@
 # CSI-1430-Fall-2021-Group-Project
 
-UPDATE 11/10/2021
-
-Redo file organization, and it is good now.
-A mock title screen is setted up.
+UPDATE 11/14/2021
 ----------------------------------------------------------------------------------
 
+Redo file organization, and it is good now.
+
+A mock title screen is setted up.
+
+Making Readme.md better looking!
+
+
 UPDATE 11/10/2021
+----------------------------------------------------------------------------------
+
 
 Folder is setted up.
 
@@ -22,9 +28,10 @@ while(!game.over())
 	game.update();
 }
 ```
-----------------------------------------------------------------------------------
+
 
 UPDATE 11/9/2021
+----------------------------------------------------------------------------------
 
 Deleted all the previous files.
 
