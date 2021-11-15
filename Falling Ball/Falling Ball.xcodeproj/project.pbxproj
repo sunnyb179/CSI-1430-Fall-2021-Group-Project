@@ -66,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				836F5C2C273B619500F5A5E7 /* Falling Ball */,
-				836F5C2B273B619500F5A5E7 /* Products */,
 				83EBD8F0273B690200E3FA75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -77,38 +76,72 @@
 				836F5C2A273B619500F5A5E7 /* Falling Ball */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		836F5C2C273B619500F5A5E7 /* Falling Ball */ = {
 			isa = PBXGroup;
 			children = (
 				83FBE29A273BD6E8004DDEF1 /* SDL_Plotter */,
-				83EBD8EB273B67F200E3FA75 /* Source */,
-				83EBD8EA273B67E500E3FA75 /* Header */,
 				836F5C2D273B619500F5A5E7 /* main.cpp */,
+				83994C7A2741F9490040CF83 /* Game */,
+				83994C7B2741FB3C0040CF83 /* Scene */,
+				83994C7D2741FC050040CF83 /* Drawing */,
+				83FBE2C7273C960D004DDEF1 /* Data.h */,
+				836F5C2B273B619500F5A5E7 /* Products */,
 			);
 			path = "Falling Ball";
 			sourceTree = "<group>";
 		};
-		83EBD8EA273B67E500E3FA75 /* Header */ = {
+		83994C7A2741F9490040CF83 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				83FBE2BA273C73BD004DDEF1 /* Game.h */,
-				83FBE2BF273C84F3004DDEF1 /* startingScreen.h */,
-				83FBE2C3273C88F7004DDEF1 /* Objects.h */,
-				83FBE2C7273C960D004DDEF1 /* Data.h */,
+				83FBE2BB273C73D0004DDEF1 /* Game.cpp */,
 			);
-			path = Header;
+			path = Game;
 			sourceTree = "<group>";
 		};
-		83EBD8EB273B67F200E3FA75 /* Source */ = {
+		83994C7B2741FB3C0040CF83 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				83FBE2BB273C73D0004DDEF1 /* Game.cpp */,
+				83994C7C2741FB700040CF83 /* Title Screen */,
+				83994C7E2741FC880040CF83 /* Game Screen */,
+				83994C7F2741FCA00040CF83 /* Leader Board Screen */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		83994C7C2741FB700040CF83 /* Title Screen */ = {
+			isa = PBXGroup;
+			children = (
+				83FBE2BF273C84F3004DDEF1 /* startingScreen.h */,
 				83FBE2C0273C8506004DDEF1 /* startingScreen.cpp */,
+			);
+			path = "Title Screen";
+			sourceTree = "<group>";
+		};
+		83994C7D2741FC050040CF83 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				83FBE2C3273C88F7004DDEF1 /* Objects.h */,
 				83FBE2C4273C890A004DDEF1 /* Objects.cpp */,
 			);
-			path = Source;
+			path = Drawing;
+			sourceTree = "<group>";
+		};
+		83994C7E2741FC880040CF83 /* Game Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Game Screen";
+			sourceTree = "<group>";
+		};
+		83994C7F2741FCA00040CF83 /* Leader Board Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Leader Board Screen";
 			sourceTree = "<group>";
 		};
 		83EBD8F0273B690200E3FA75 /* Frameworks */ = {
@@ -127,8 +160,8 @@
 			children = (
 				83EBD8EF273B688800E3FA75 /* SDL_Plotter.h */,
 				83EBD8F8273B69A000E3FA75 /* SDL_Plotter.cpp */,
-				83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */,
 				83FBE29E273C1E12004DDEF1 /* SDL_Tester.h */,
+				83FBE29B273C1DB7004DDEF1 /* SDL_Tester.cpp */,
 			);
 			path = SDL_Plotter;
 			sourceTree = "<group>";

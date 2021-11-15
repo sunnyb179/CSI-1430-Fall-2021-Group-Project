@@ -9,12 +9,14 @@
 #include "Game.h"
  
 int main(){
+    
     game Game;
     Game.init();
     Game.play();
-    //while(!Game.over())
-    //{
-    //    Game.update();
-    //}
+    while(!Game.over())
+    {
+        Game.update();
+    }
     return 0;
+    
 }

@@ -14,26 +14,24 @@ void game::init(){
 }
 
 void game::play(){
-    while(!screen.getQuit()){
-        if(screen.kbhit())
-        {
-            screen.getKey();
-        }
     
-        startingScreen(screen);
-    }
 }
 
 void game::update(){
+    if(screen.kbhit())
+    {
+        screen.getKey();
+    }
+    startingScreen(screen);
+    screen.update();
     
-    
-    //When need to write end game
-    //if(){
-    //    gameOverStatus=true;
-    //}
 }
 
 bool game::over(){
+    if(screen.getQuit())
+    {
+        gameOverStatus=true;
+    }
     return gameOverStatus;
 }
 

@@ -20,6 +20,7 @@ class game{
 private:
     bool gameOverStatus;    //To see if the game end or not
     
+    
 public:
     void init();            //Set data inplace for the game
     void play();            //Open up window, draw stuff

@@ -10,5 +10,5 @@
 void startingScreen(SDL_Plotter& screen){
     drawBackground(WINDOW_Y_SIZE,WINDOW_X_SIZE,254,155,66,screen);
     drawButton(175,450,100,40,100,100,100, screen);
-    screen.update();
+    
 }
