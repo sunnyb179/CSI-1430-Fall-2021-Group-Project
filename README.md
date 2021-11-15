@@ -1,7 +1,15 @@
 # CSI-1430-Fall-2021-Group-Project
 
 UPDATE 11/10/2021
+
+Redo file organization, and it is good now.
+A mock title screen is setted up.
+----------------------------------------------------------------------------------
+
+UPDATE 11/10/2021
+
 Folder is setted up.
+
 Game function, File needed(.h&.cpp): Color(R,G,B), Point(x,y), Ball(..), Force(), Score()...
 
 The following is the expected main.
