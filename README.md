@@ -37,6 +37,7 @@ Deleted all the previous files.
 
 Created Xcode project.
 
+NOTES
 ----------------------------------------------------------------------------------
 
 Design a game called falling balls.
