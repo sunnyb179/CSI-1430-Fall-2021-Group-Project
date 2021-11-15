@@ -1,5 +1,10 @@
 # CSI-1430-Fall-2021-Group-Project
 
+TO DO LIST
+----------------------------------------------------------------------------------
+
+*https://docs.google.com/document/d/1P1Gj-dIfs4n6LtBGCAeEzerf5wlxqdUSVtOHM66vmK8/edit?usp=sharing
+
 UPDATE 11/14/2021
 ----------------------------------------------------------------------------------
 
