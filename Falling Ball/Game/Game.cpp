@@ -7,27 +7,36 @@
 
 #include "Game.h"
 
-SDL_Plotter screen(WINDOW_X_SIZE,WINDOW_Y_SIZE);
 
-void game::init(){
+void game::init(SDL_Plotter& screen){
     gameOverStatus=false;
+    currentScene=0;
 }
 
-void game::play(){
+void game::play(SDL_Plotter& screen){
     
 }
 
-void game::update(){
-    if(screen.kbhit())
+void game::update(SDL_Plotter& screen){
+    if(currentScene==0)
     {
-        screen.getKey();
+        currentScene=startingScreen(screen);
     }
-    startingScreen(screen);
-    screen.update();
-    
+    else if(currentScene==1)
+    {
+        currentScene=gameScreen(screen);
+    }
+    else if(currentScene==2)
+    {
+        currentScene=2;
+    }
+    else if(currentScene==-1)
+    {
+        
+    }
 }
 
-bool game::over(){
+bool game::over(SDL_Plotter& screen){
     if(screen.getQuit())
     {
         gameOverStatus=true;

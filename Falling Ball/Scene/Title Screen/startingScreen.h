@@ -11,7 +11,9 @@
 #include "Objects.h"
 #include "Data.h"
 
-void startingScreen(SDL_Plotter& screen);
+int startingScreen(SDL_Plotter& screen);
+
+//return the next screen.
 
 
 #endif /* startingScreen_h */
