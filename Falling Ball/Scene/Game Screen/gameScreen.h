@@ -14,7 +14,7 @@
 
 int gameScreen(SDL_Plotter& screen);
 
-//void randomlizedFirstRow(PositionStatus& gameObejct[gOBJECT_COLUMN][gOBJECT_ROW]);
+PositionStatus getRandomlizedObject(int i,int Objectshift,int possiblity);
 
 void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plotter& screen);
 

@@ -10,30 +10,27 @@
 int gameScreen(SDL_Plotter& screen){
     //Data Abstraction
     int nextScreen=0;
-    bool notSelect=true;
+    bool userIsIdol=true;
     bool fallingBallFalling,gameOver=false;
     
     //Window drawing
-    drawBackground(WINDOW_X_SIZE,WINDOW_Y_SIZE,gBACKGROUND_COLOR_R,gBACKGROUND_COLOR_G+100,gBACKGROUND_COLOR_B,screen);
+    drawBackground(WINDOW_X_SIZE,WINDOW_Y_SIZE,gBACKGROUND_COLOR_R,gBACKGROUND_COLOR_G,gBACKGROUND_COLOR_B,screen);
     screen.update();
     
     
     PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW];
     int fallingBallAmount=1; //If making the game save and load, do it here
     int mouseX=0,mouseY=0;
-    int Objectshift=20;
-    
-    
-    
+    int Objectshift=gOBJECT_SHIFT;
     
     while(!gameOver){
-        notSelect=true;
+        userIsIdol=true;
         
-        while(notSelect)
+        while(userIsIdol)
         {
             if(screen.getQuit())
             {
-                notSelect=false;
+                userIsIdol=false;
                 gameOver=true;
             }
             else if(screen.kbhit())
@@ -42,7 +39,7 @@ int gameScreen(SDL_Plotter& screen){
             }
             else if(screen.getMouseClick(mouseX,mouseY)) //Chang me:: Now is click generate new line
             {
-                notSelect=false;
+                userIsIdol=false;
                 
                 
                 for(int i=0;i<gOBJECT_ROW;i++) //find game over or not
@@ -60,52 +57,49 @@ int gameScreen(SDL_Plotter& screen){
                     
                     if(!gameOver)
                     {
+                        //moving all object to the next line
                         for(int i=gOBJECT_COLUMN-1;i>0;i--)
                         {
                             for(int ii=0;ii<gOBJECT_ROW;ii++)
                             {
                                 gameObejct[i][ii]=gameObejct[i-1][ii];
-                                gameObejct[i][ii].centerY-=70; //change this later
+                                gameObejct[i][ii].centerY-=70; //change this later,distance between each line
                             }
                         }
             
-                        
-                        for(int i=0;i<gOBJECT_ROW;i++) //initilize first row
+                        //add a new roll
+                        for(int i=0;i<gOBJECT_ROW;i++)
                         {
-                            if(true){ //Change later, the possibilty of generate a block
-                                PositionStatus newObeject;
-                                gameObejct[0][i]=newObeject;
-                                newObeject.objectType=rand()%3; //Change later, Ramdomlize the type
-                                newObeject.objectLife=5; //Change later, Ramdomlize the life
-                                newObeject.centerX=(WINDOW_X_SIZE/(gOBJECT_ROW+1))*(i+1)+Objectshift;
-                                newObeject.centerY=WINDOW_Y_SIZE-(WINDOW_Y_SIZE-100)/gOBJECT_COLUMN;
-                                gameObejct[0][i]=newObeject;
-                            }
+                            gameObejct[0][i]=getRandomlizedObject(i,Objectshift,gOBJECT_GENERATE_INITIAL_POSSIBILITY);
                         }
                         Objectshift*=-1;
                         
-                        drawBackground(WINDOW_X_SIZE,WINDOW_Y_SIZE,gBACKGROUND_COLOR_R,gBACKGROUND_COLOR_G+100,gBACKGROUND_COLOR_B,screen);
+                        //refresh screen
                         printObjects(gameObejct,screen);
                     }
                 }
             }
         }
-    
-    
-    
-
-    
-
-    
-    
-    
-    
-    
     return nextScreen;
+}
+
+
+
+PositionStatus getRandomlizedObject(int i,int Objectshift,int possiblity){
+    PositionStatus newObeject;
+    if((rand()%100)+1<=possiblity)
+    {
+        newObeject.objectType=rand()%3; //Change later, Ramdomlize the type
+        newObeject.objectLife=5; //Change later, Ramdomlize the life
+        newObeject.centerX=(WINDOW_X_SIZE/(gOBJECT_ROW+1))*(i+1)+Objectshift;
+        newObeject.centerY=WINDOW_Y_SIZE-(WINDOW_Y_SIZE-100)/gOBJECT_COLUMN;
+    }
+    return newObeject;
 }
 
     
 void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plotter& screen){
+    drawBackground(WINDOW_X_SIZE,WINDOW_Y_SIZE,gBACKGROUND_COLOR_R,gBACKGROUND_COLOR_G,gBACKGROUND_COLOR_B,screen);
     for(int i=0;i<gOBJECT_COLUMN;i++)
     {
         for(int ii=0;ii<gOBJECT_ROW;ii++)
@@ -117,3 +111,4 @@ void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plo
     }
     screen.update();
 }
+
