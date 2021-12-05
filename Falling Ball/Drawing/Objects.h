@@ -15,9 +15,12 @@ void drawBackground(int sizeX,int sizeY,int R,int G,int B,SDL_Plotter& screen);
 
 void drawButton(int centerX,int centerY,int sizeX,int sizeY,int R,int G,int B,SDL_Plotter& screen);
 
-//void drawRectangle(int centerX,int centerY,int sizeX,int sizeY,int R,int G,int B,SDL_Plotter& screen);
+void drawCircle(int centerX,int centerY,int radius,int R,int G,int B,SDL_Plotter& screen);
 
-//void drawCircle(SDL_Plotter& screen);
+void drawRectangle(int centerX,int centerY,int sizeX,int sizeY,int R,int G,int B,SDL_Plotter& screen);
 
+void drawTriangle(int centerX,int centerY,int height,int R, int G, int B, SDL_Plotter& screen);
+
+void plotPoint(int X,int Y,int R,int G,int B,SDL_Plotter& screen);
 
 #endif /* Objects_h */

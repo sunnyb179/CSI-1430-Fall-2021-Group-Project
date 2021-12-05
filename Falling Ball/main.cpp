@@ -11,7 +11,7 @@
 int main(){
     game Game;
     
-    SDL_Plotter screen(WINDOW_X_SIZE,WINDOW_Y_SIZE);
+    SDL_Plotter screen(WINDOW_Y_SIZE,WINDOW_X_SIZE);
     
     Game.init(screen);
     
