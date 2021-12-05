@@ -19,6 +19,7 @@ int gameScreen(SDL_Plotter& screen){
     
     
     PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW];
+    vector<fallingBall> allBallOnScreen;
     int fallingBallAmount=1; //If making the game save and load, do it here
     int mouseX=0,mouseY=0;
     int Objectshift=gOBJECT_SHIFT;
@@ -74,8 +75,70 @@ int gameScreen(SDL_Plotter& screen){
                         }
                         Objectshift*=-1;
                         
-                        //refresh screen
+                        
+                        
+                        //test for falling ball
+                        for(int i=0;i<fallingBallAmount;i++)
+                        {
+                            fallingBall newBall;
+                            allBallOnScreen.push_back(newBall);
+                        }
+                        
+                        //print out
                         printObjects(gameObejct,screen);
+                        allBallOnScreen[0].drawBall(screen);
+                        screen.update();
+                        userIsIdol=true;
+                        while(userIsIdol)
+                        {
+                            if(screen.getQuit())
+                            {
+                                userIsIdol=false;
+                                gameOver=true;
+                            }
+                            else if(screen.kbhit())
+                            {
+                                screen.getKey();
+                            }
+                            else if(screen.getMouseClick(mouseX,mouseY))
+                            {
+                                userIsIdol=false;
+                            }
+                        }
+                        
+                        double findXV,findYV;
+                        findYV=(mouseY-allBallOnScreen[0].centerY)/sqrt(pow(mouseY-allBallOnScreen[0].centerY,2)+pow(mouseX-allBallOnScreen[0].centerX,2))*5;
+                        findXV=(mouseX-allBallOnScreen[0].centerX)/sqrt(pow(mouseY-allBallOnScreen[0].centerY,2)+pow(mouseX-allBallOnScreen[0].centerX,2))*5;
+                        
+                        allBallOnScreen[0].volcityX=findXV;
+                        allBallOnScreen[0].volcityY=findYV;
+                        cout<<findXV<<" "<<findYV;
+                        
+                        while(allBallOnScreen[0].centerY-gSMALL_BALL_RADIUS<WINDOW_Y_SIZE)
+                        {
+                            //Bounce off the wall
+                            if(allBallOnScreen[0].centerX<gSMALL_BALL_RADIUS||allBallOnScreen[0].centerX>WINDOW_X_SIZE-gSMALL_BALL_RADIUS)
+                            {
+                                allBallOnScreen[0].volcityX*=-1;
+                            }
+                            
+                            //Gravity
+                            allBallOnScreen[0].volcityY+=gGRAVITY_ACELERATION;
+                            
+                            allBallOnScreen[0].centerY+=round(allBallOnScreen[0].volcityY);
+                            allBallOnScreen[0].centerX+=round(allBallOnScreen[0].volcityX);
+                            
+                            
+                            
+                            printObjects(gameObejct,screen);
+                            allBallOnScreen[0].drawBall(screen);
+                            screen.Sleep(10);
+                            screen.update();
+                        }
+                        printObjects(gameObejct,screen);
+                        screen.update();
+                        //end of testing small falling ball
+                        
                     }
                 }
             }
@@ -89,7 +152,7 @@ PositionStatus getRandomlizedObject(int i,int Objectshift,int possiblity){
     PositionStatus newObeject;
     if((rand()%100)+1<=possiblity)
     {
-        newObeject.objectType=rand()%3; //Change later, Ramdomlize the type
+        newObeject.objectType=rand()%3;
         newObeject.objectLife=5; //Change later, Ramdomlize the life
         newObeject.centerX=(WINDOW_X_SIZE/(gOBJECT_ROW+1))*(i+1)+Objectshift;
         newObeject.centerY=WINDOW_Y_SIZE-(WINDOW_Y_SIZE-100)/gOBJECT_COLUMN;
@@ -105,10 +168,7 @@ void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plo
         for(int ii=0;ii<gOBJECT_ROW;ii++)
         {
             gameObejct[i][ii].drawObject(screen);
-            cout<<gameObejct[i][ii].objectType;
         }
-        cout<<endl;
     }
-    screen.update();
 }
 

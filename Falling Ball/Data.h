@@ -39,9 +39,12 @@ const int gOBJECT_COLUMN=7;
 const int gOBJECT_SHIFT=14;
 const int gOBJECT_GENERATE_INITIAL_POSSIBILITY=90; //out of 100 percent
 
-const int gSMALL_BAll_R=169;
-const int gSMALL_BAll_G=250;
-const int gSMALL_BAll_B=110;
+const int gSTART_SPEED=5;//pixel/second
+const double gGRAVITY_ACELERATION=0.05;//pixel/second^2
+
+const int gSMALL_BAll_R=0;
+const int gSMALL_BAll_G=0;
+const int gSMALL_BAll_B=0;
 const int gSMALL_BALL_RADIUS=10;
 
 const int gSQUAR_R=169;
@@ -59,8 +62,5 @@ const int gOBJECT_BALL_G=250;
 const int gOBJECT_BALL_B=110;
 const int gOBJECT_BALL_RADIUS=20;
 
-/*
-const int gSTART_SPEED=300;//pixel/second
-const int gGRAVITY_ACELERATION=100;//pixel/second^2
-*/
+
 #endif /* Data_h */

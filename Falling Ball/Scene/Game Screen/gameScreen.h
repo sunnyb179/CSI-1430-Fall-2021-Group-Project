@@ -10,7 +10,9 @@
 
 #include "Objects.h"
 #include "gameObjectStatus.h"
+#include "fallingBall.h"
 #include "Data.h"
+#include <vector>
 
 int gameScreen(SDL_Plotter& screen);
 

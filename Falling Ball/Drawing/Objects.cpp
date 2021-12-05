@@ -60,7 +60,7 @@ void drawCircle(int centerX,int centerY,int radius,int R,int G,int B,SDL_Plotter
         }
         if(loopTimes==1)
         {
-            R+=220;
+            R+=0;
         }
         radius--;
     }
