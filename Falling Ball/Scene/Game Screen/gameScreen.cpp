@@ -126,21 +126,21 @@ int gameScreen(SDL_Plotter& screen){
                     }
                     
                     //HERE IS TESTING FOR OBJECT COLLOSION//////////////
-                    for(int i=0;i<gOBJECT_COLUMN;i++)
+                    for(int ii=0;ii<gOBJECT_COLUMN;ii++)
                     {
-                        for(int ii=0;ii<gOBJECT_ROW;ii++)
+                        for(int iii=0;iii<gOBJECT_ROW;iii++)
                         {
                             double bounceAngle=INFINITY;
-                            if(isCollide(allBallOnScreen[i],gameObejct[i][ii],bounceAngle))
+                            if(isCollide(allBallOnScreen[i],gameObejct[ii][iii],bounceAngle))
                             {
                                 
                                 
                                 
                                 
-                                gameObejct[i][ii].objectLife--;
-                                if(gameObejct[i][ii].objectLife==0)
+                                gameObejct[ii][iii].objectLife--;
+                                if(gameObejct[ii][iii].objectLife==0)
                                 {
-                                    gameObejct[i][ii].objectType=-1;
+                                    gameObejct[ii][iii].objectType=-1;
                                 }
                                 
                                 if(bounceAngle==INFINITY)
@@ -268,7 +268,7 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle){
     bool collide=false;
     if(Object.objectType==0)
     {
-        /* is bad
+        
         int Otop,Obottom,Oleft,Oright;
         double Btop,Bbottom,Bleft,Bright;
         Otop=Object.centerY-gSQUAR_SIDE;
@@ -303,7 +303,6 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle){
             collide=true;
             bounceAngle=180;
         }
-        */
     }
     else if(Object.objectType==1)
     {
