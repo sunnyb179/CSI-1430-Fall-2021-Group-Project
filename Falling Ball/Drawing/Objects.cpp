@@ -6,17 +6,11 @@
 //
 
 #include "Objects.h"
-#include <cmath>
-#include <iostream>
 
 void plotPoint(int X,int Y,int R,int G,int B,SDL_Plotter& screen){
     if(X>=0&&X<WINDOW_X_SIZE&&Y>=0&&Y<WINDOW_Y_SIZE)
     {
         screen.plotPixel(X,Y,R,G,B);
-    }
-    else
-    {
-        cout<<X<<" "<<Y<<endl;
     }
 }
 void drawRectangle(int centerX,int centerY,int sizeX,int sizeY,int R,int G,int B,SDL_Plotter& screen){
@@ -82,4 +76,10 @@ void drawTriangle(int centerX,int centerY,int height, int R, int G, int B, SDL_P
         }
         xchange+=0.6;
     }
+}
+
+void drawBallAdder(int centerX,int centerY,SDL_Plotter& screen){
+    drawCircle(centerX,centerY,gBAll_ADDER_RADIUS,gBAll_ADDER_R,gBAll_ADDER_G,gBAll_ADDER_B,screen);
+    drawCircle(centerX,centerY,round(gBAll_ADDER_RADIUS*0.9),gBACKGROUND_COLOR_R,gBACKGROUND_COLOR_G,gBACKGROUND_COLOR_B,screen);
+    drawCircle(centerX,centerY,round(gBAll_ADDER_RADIUS*0.6),gBAll_ADDER_R,gBAll_ADDER_R,gBAll_ADDER_R,screen);
 }

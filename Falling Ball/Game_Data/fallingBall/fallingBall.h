@@ -12,8 +12,8 @@
 #include "Data.h"
 
 struct fallingBall{
-    int centerX=WINDOW_X_SIZE/2;
-    int centerY=50;
+    double centerX=WINDOW_X_SIZE/2;
+    double centerY=gSTART_Height;
     double volcityY;
     double volcityX;
     void drawBall(SDL_Plotter& screen);

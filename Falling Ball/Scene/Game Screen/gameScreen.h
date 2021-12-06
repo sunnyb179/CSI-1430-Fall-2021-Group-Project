@@ -13,11 +13,18 @@
 #include "fallingBall.h"
 #include "Data.h"
 #include <vector>
+#include <ctime>
 
 int gameScreen(SDL_Plotter& screen);
 
-PositionStatus getRandomlizedObject(int i,int Objectshift,int possiblity);
+PositionStatus getRandomlizedObject(int i,int Objectshift,int currentRowAmount);
+
+fallingBall newBall();
 
 void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plotter& screen);
+
+bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle);
+
+
 
 #endif /* gameScreen_h */

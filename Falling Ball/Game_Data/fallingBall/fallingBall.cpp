@@ -8,5 +8,5 @@
 #include "fallingBall.h"
 
 void fallingBall::drawBall(SDL_Plotter& screen){
-    drawCircle(centerX, centerY, gSMALL_BALL_RADIUS, gSMALL_BAll_R, gSMALL_BAll_G, gSMALL_BAll_B, screen);
+    drawCircle(round(centerX), round(centerY), gSMALL_BALL_RADIUS, gSMALL_BAll_R, gSMALL_BAll_G, gSMALL_BAll_B, screen);
 }

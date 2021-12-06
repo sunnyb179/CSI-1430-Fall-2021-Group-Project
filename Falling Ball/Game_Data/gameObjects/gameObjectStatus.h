@@ -14,6 +14,9 @@
 #include "Data.h"
 
 struct PositionStatus{
+    int R=gOBJECT_R;
+    int G=gOBJECT_G;
+    int B=gOBJECT_B;
     int objectType=-1;
     int objectLife=0;
     int centerX=-1;
