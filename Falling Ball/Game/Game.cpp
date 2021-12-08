@@ -9,13 +9,14 @@
 
 
 void game::init(SDL_Plotter& screen){
-    screen.initSound("Nyan Cat.wav");
-    gameOverStatus=false;
-    currentScene=0;
+    //screen.initSound("Nyan Cat.wav");
+    screen.initSound("Ballhit.wav");
+    screen.initSound("start.wav");
 }
 
 void game::play(SDL_Plotter& screen){
-    
+    gameOverStatus=false;
+    currentScene=0;
 }
 
 void game::update(SDL_Plotter& screen){

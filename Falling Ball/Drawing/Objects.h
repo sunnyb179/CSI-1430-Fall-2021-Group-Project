@@ -28,8 +28,10 @@ void drawTriangle(int centerX,int centerY,int height,int R, int G, int B, SDL_Pl
 
 void plotPoint(int X,int Y,int R,int G,int B,SDL_Plotter& screen);
 
-void plotChar(int X,int Y,char goal,int fontSize,SDL_Plotter& screen);
+void plotChar(int X,int Y,char goal,int fontSize,int R,int G,int B,SDL_Plotter& screen);
 
-void plotString(char text[],int numberOfChar,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen);
+void plotString(const char text[],int numberOfChar,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen);
+
+void plotInt(int num,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen);
 
 #endif /* Objects_h */

@@ -84,7 +84,7 @@ void drawBallAdder(int centerX,int centerY,SDL_Plotter& screen){
     drawCircle(centerX,centerY,round(gBAll_ADDER_RADIUS*0.6),gBAll_ADDER_R,gBAll_ADDER_R,gBAll_ADDER_R,screen);
 }
 
-void plotChar(int X,int Y,char goal,int fontSize,SDL_Plotter& screen){
+void plotChar(int X,int Y,char goal,int fontSize,int R,int G,int B,SDL_Plotter& screen){
     string lineSkipping;
     ifstream inputFile;
     char reading;
@@ -120,20 +120,38 @@ void plotChar(int X,int Y,char goal,int fontSize,SDL_Plotter& screen){
             inputFile>>read;
             if(read==1)
             {
-                drawRectangle(X+ii*fontSize, Y+i*fontSize, fontSize/2, fontSize/2, 255, 255, 255, screen);
+                drawRectangle(X+ii*fontSize, Y+i*fontSize, fontSize/2, fontSize/2, R, G, B, screen);
             }
         }
     }
     inputFile.close();
 }
 
-
-
-
-
-void plotString(char text[],int numberOfChar,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen){
+void plotString(const char text[],int numberOfChar,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen){
     for(int i=0;i<numberOfChar;i++)
     {
-        plotChar(X+i*5*fontSize+fontSize/2,Y,text[i],fontSize,screen);
+        plotChar(X+i*5*fontSize+fontSize/2,Y,text[i],fontSize,R,G,B,screen);
     }
+}
+
+void plotInt(int num,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen){
+    char print[10];
+    int test=1000000000,pos=0;
+    print[0]='0';
+    while(test!=0&&num/test==0)
+    {
+        test/=10;
+    }
+    if(test==0)
+    {
+        pos++;
+    }
+    while(test!=0)
+    {
+        print[pos]=static_cast<char>(num/test)+'0';
+        pos++;
+        num%=test;
+        test/=10;
+    }
+    plotString(static_cast<const char*>(print),pos,fontSize,X,Y,R,G,B,screen);
 }

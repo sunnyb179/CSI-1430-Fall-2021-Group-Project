@@ -16,9 +16,11 @@ int startingScreen(SDL_Plotter& screen){
     drawBackground(WINDOW_X_SIZE,WINDOW_Y_SIZE,sBACKGROUND_COLOR_R,sBACKGROUND_COLOR_G,sBACKGROUND_COLOR_B,screen);
     drawButton(sGAME_BUTTON_CENTER_X,sGAME_BUTTON_CENTER_Y,sGAME_BUTTON_SIZE_X,sGAME_BUTTON_SIZE_Y,sGAME_BUTTON_COLOR_R,sGAME_BUTTON_COLOR_G,sGAME_BUTTON_COLOR_B, screen);
     
-    char test[100]="falling",test2[100]="ball";
-    plotString(test, 7, 6, 20, 100, 255, 255, 255, screen);
-    plotString(test2, 4, 6, 200, 150, 255, 255, 255, screen);
+    
+    plotString(sTITLE_Line1, sTITLE_Line1_Length, sTITLE_SIZE, sTITLE_LINE1_X, sTITLE_Line1_Y, sTITLE_COLOR_R, sTITLE_COLOR_G, sTITLE_COLOR_B, screen);
+    plotString(sTITLE_Line2, sTITLE_LINE2_LENGTH, sTITLE_SIZE, sTITLE_Line2_X, sTITLE_Line2_Y, sTITLE_COLOR_R, sTITLE_COLOR_G, sTITLE_COLOR_B, screen);
+    plotString(sTITLE_Line2, sTITLE_LINE2_LENGTH, sTITLE_SIZE, sTITLE_Line2_X, sTITLE_Line2_Y, sTITLE_COLOR_R, sTITLE_COLOR_G, sTITLE_COLOR_B, screen);
+    plotString(sSTART, sSTART_LENGTH, sSTART_SIZE, sSTART_X, sSTART_Y, sSTART_R, sSTART_G, sSTART_B, screen);
     
     screen.update();
     
@@ -39,9 +41,10 @@ int startingScreen(SDL_Plotter& screen){
         {
             if(mouseX<sGAME_BUTTON_CENTER_X+sGAME_BUTTON_SIZE_X&&mouseX>sGAME_BUTTON_CENTER_X-sGAME_BUTTON_SIZE_X&&mouseY<sGAME_BUTTON_CENTER_Y+sGAME_BUTTON_SIZE_Y&&mouseY>sGAME_BUTTON_CENTER_Y-sGAME_BUTTON_SIZE_Y)
             {
-                screen.playSound("Nyan Cat.wav");
+                //screen.playSound("Nyan Cat.wav");
                 notSelect=false;
                 nextScreen=1;
+                screen.playSound("start.wav");
             }
         }
         else if(screen.getKey()=='q')

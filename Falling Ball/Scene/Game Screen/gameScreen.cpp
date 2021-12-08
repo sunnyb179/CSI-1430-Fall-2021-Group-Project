@@ -66,6 +66,12 @@ int gameScreen(SDL_Plotter& screen){
         //Paint the screen
         printObjects(gameObejct,screen);
         allBallOnScreen[0].drawBall(screen);
+        plotString(gSCORE_LINE, gSCORE_LINE_LENGTH, gSCORE_LINE_SIZE, gSCORE_LINE_X, gSCORE_LINE_Y, gSCORE_LINE_COLOR_R, gSCORE_LINE_COLOR_R, gSCORE_LINE_COLOR_R, screen);
+        plotInt(currentGameScore,gSCORE_LINE_SIZE,gSCORE_LINE_X*8, gSCORE_LINE_Y,gSCORE_LINE_COLOR_R,gSCORE_LINE_COLOR_G,gSCORE_LINE_COLOR_G,screen);
+        screen.update();
+        
+        plotString(gFPS, gFPS_LENGTH, gFPS_SIZE, gFPS_X, gFPS_Y, gFPS_R, gFPS_R, gFPS_R, screen);
+        plotInt(FPS,gFPS_SIZE,gFPS_X+50, gSCORE_LINE_Y,gFPS_R,gFPS_G,gFPS_G,screen);
         screen.update();
         
         //Wait for user to shoot
@@ -171,6 +177,7 @@ int gameScreen(SDL_Plotter& screen){
                                 }
                                 else
                                 {
+                                    screen.playSound("Ballhit.wav");
                                     currentGameScore++;
                                     if(bounceAngle==PI/2||bounceAngle==PI/2*3)
                                     {
@@ -182,11 +189,20 @@ int gameScreen(SDL_Plotter& screen){
                                         allBallOnScreen[i].volcityY*=gBounce_ACELERATION_PERCENTAGE;
                                         allBallOnScreen[i].volcityY*=-1;
                                     }
+                                    else if(bounceAngle==-1)
+                                    {
+                                        allBallOnScreen[i].volcityY*=-1*gBounce_ACELERATION_PERCENTAGE;
+                                        allBallOnScreen[i].volcityX*=-1*gBounce_ACELERATION_PERCENTAGE;
+                                    }
                                     else
                                     {
-                                        double angle=2*bounceAngle-allBallOnScreen[i].getVolcityAngle()+PI;
-                                        allBallOnScreen[i].volcityX*=sin(angle)*gBounce_ACELERATION_PERCENTAGE;
-                                        allBallOnScreen[i].volcityY*=cos(angle)*gBounce_ACELERATION_PERCENTAGE;
+                                        double test=allBallOnScreen[i].volcityX;
+                                        allBallOnScreen[i].volcityX=allBallOnScreen[i].volcityY;
+                                        allBallOnScreen[i].volcityY=test;
+                                        if(allBallOnScreen[i].centerX<gameObejct[ii][iii].centerX)
+                                        {
+                                            allBallOnScreen[i].volcityX*=-1;
+                                        }
                                     }
                                     //cout<<angle/PI*180<<endl;
                                     //HERE
@@ -204,6 +220,9 @@ int gameScreen(SDL_Plotter& screen){
                 {
                     allBallOnScreen[i].drawBall(screen);
                 }
+                plotString(gSCORE_LINE, gSCORE_LINE_LENGTH, gSCORE_LINE_SIZE, gSCORE_LINE_X, gSCORE_LINE_Y, gSCORE_LINE_COLOR_R, gSCORE_LINE_COLOR_R, gSCORE_LINE_COLOR_R, screen);
+                plotInt(currentGameScore,gSCORE_LINE_SIZE,gSCORE_LINE_X*8, gSCORE_LINE_Y,gSCORE_LINE_COLOR_R,gSCORE_LINE_COLOR_G,gSCORE_LINE_COLOR_G,screen);
+                plotString(gFPS, gFPS_LENGTH, gFPS_SIZE, gFPS_X, gFPS_Y, gFPS_R, gFPS_R, gFPS_R, screen);
                 
                 //Delay for good visual
                 frameTime=clock()-frameTime;
@@ -211,10 +230,14 @@ int gameScreen(SDL_Plotter& screen){
                 timeForPause=timeForFrame-duration;
                 if(timeForPause<0)
                 {
+                    plotInt(round(1/(duration/1000.0)),gFPS_SIZE,gFPS_X+50, gSCORE_LINE_Y,gFPS_R,gFPS_G,gFPS_G,screen);
+                    screen.update();
                     cout<<"WARNING CHANGE FPS TO AT MOST"<<round(1/(duration/1000.0))<<endl;
                 }
                 else
                 {
+                    plotInt(FPS,gFPS_SIZE,gFPS_X+50, gSCORE_LINE_Y,gFPS_R,gFPS_G,gFPS_G,screen);
+                    screen.update();
                     screen.Sleep(timeForPause);
                 }
                 screen.update();
@@ -235,6 +258,32 @@ int gameScreen(SDL_Plotter& screen){
             }
         }
     }
+    
+    
+    plotString(gSTOP, gSTOP_LENGTH, gSTOP_SIZE, gSTOP_X, gSTOP_Y, gSTOP_R, gSTOP_G, gSTOP_B, screen);
+    screen.update();
+    
+    bool userIsIdol=true;
+    while(userIsIdol)
+    {
+        if(screen.getQuit())
+        {
+            userIsIdol=false;
+            gameOver=true;
+        }
+        else if(screen.kbhit())
+        {
+            screen.getKey();
+        }
+        else if(screen.getMouseClick(mouseX,mouseY))
+        {
+            if(mouseY<300)
+            {
+                userIsIdol=false;
+            }
+        }
+    }
+    
     return nextScreen;
 }
 
@@ -323,32 +372,42 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& c
             double b1, b2;
             b1=static_cast<double>(Object.centerY+gTRIANGLE_HIEHGT)-k1*(static_cast<double>(Object.centerX));
             b2=static_cast<double>(Object.centerY+gTRIANGLE_HIEHGT)-k2*(static_cast<double>(Object.centerX));
-            if (ball.centerX*k1+b1+2*gSMALL_BALL_RADIUS+10>=ball.centerY&&ball.centerX*k2+b2+2*gSMALL_BALL_RADIUS+10>=ball.centerY&&ball.centerY>Object.centerY-gSMALL_BALL_RADIUS){
+            if (ball.centerX*k1+b1+2*gSMALL_BALL_RADIUS>=ball.centerY&&ball.centerX*k2+b2+2*gSMALL_BALL_RADIUS>=ball.centerY&&ball.centerY>Object.centerY-gSMALL_BALL_RADIUS){
                 collide=true;
-            }
-            if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)>0){
-                bounceAngle=(120/180)*PI;
-            }
-            else if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)<0){
-                bounceAngle=(240/180)*PI;
-            }
-            else if (ball.centerY<Object.centerY){
-                bounceAngle=2*PI;
+                correctCenterY-=ball.volcityY;
+                correctCenterX-=ball.volcityX;
+                if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)>0){
+                    bounceAngle=(120/180.0)*PI;
+                }
+                else if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)<0){
+                    bounceAngle=(240/180.0)*PI;
+                }
+                else if (ball.centerY<Object.centerY){
+                    bounceAngle=2*PI;
+                }
+                else{
+                    bounceAngle=-1;
+                }
             }
         }
     else if(Object.objectType==2)
     {
        if (sqrt(pow(ball.centerY-Object.centerY,2)+pow(ball.centerX-Object.centerX,2))<=gSMALL_BALL_RADIUS+gOBJECT_BALL_RADIUS){
-           bounceAngle=0;
+           //bounceAngle=0;
+           bounceAngle=-1;
+           while(sqrt(pow(correctCenterY-Object.centerY,2)+pow(correctCenterX-Object.centerX,2))<gSMALL_BALL_RADIUS+gOBJECT_BALL_RADIUS)
+           {
+               correctCenterY-=ball.volcityY;
+               correctCenterX-=ball.volcityX;
+           }
            collide=true;
        }
     }
     else if(Object.objectType==3)
     {
         double distance=sqrt(pow(round(ball.centerX)-Object.centerX,2)+pow(round(ball.centerY)-Object.centerY,2));
-        if(distance<gSMALL_BALL_RADIUS+gBAll_ADDER_HITBOXRAD)
+        if(distance<=gSMALL_BALL_RADIUS+gBAll_ADDER_HITBOXRAD)
         {
-            
             collide=true;
         }
     }
