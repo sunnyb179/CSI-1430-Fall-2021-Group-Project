@@ -188,6 +188,7 @@ int gameScreen(SDL_Plotter& screen){
                                         allBallOnScreen[i].volcityX*=sin(angle)*gBounce_ACELERATION_PERCENTAGE;
                                         allBallOnScreen[i].volcityY*=cos(angle)*gBounce_ACELERATION_PERCENTAGE;
                                     }
+                                    //cout<<angle/PI*180<<endl;
                                     //HERE
                                 }
                                 //NEED A LOT OF HARD WORK
@@ -243,7 +244,7 @@ PositionStatus getRandomlizedObject(int i,int Objectshift,int currentRowAmount){
     PositionStatus newObeject;
     if((rand()%100)+1<=gOBJECT_GENERATE_INITIAL_POSSIBILITY)
     {
-        newObeject.objectType=rand()%2;
+        newObeject.objectType=rand()%3;
         newObeject.objectLife=rand()%(currentRowAmount*2)+1; //Change later, Ramdomlize the life
         newObeject.centerX=(WINDOW_X_SIZE/(gOBJECT_ROW+1))*(i+1)+Objectshift;
         newObeject.centerY=WINDOW_Y_SIZE-(WINDOW_Y_SIZE-100)/gOBJECT_COLUMN;
@@ -322,14 +323,14 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& c
             double b1, b2;
             b1=static_cast<double>(Object.centerY+gTRIANGLE_HIEHGT)-k1*(static_cast<double>(Object.centerX));
             b2=static_cast<double>(Object.centerY+gTRIANGLE_HIEHGT)-k2*(static_cast<double>(Object.centerX));
-            if (ball.centerX*k1+b1+2*gSMALL_BALL_RADIUS>=ball.centerY&&ball.centerX*k2+b2+2*gSMALL_BALL_RADIUS>=ball.centerY&&ball.centerY>Object.centerY-gSMALL_BALL_RADIUS){
+            if (ball.centerX*k1+b1+2*gSMALL_BALL_RADIUS+10>=ball.centerY&&ball.centerX*k2+b2+2*gSMALL_BALL_RADIUS+10>=ball.centerY&&ball.centerY>Object.centerY-gSMALL_BALL_RADIUS){
                 collide=true;
             }
             if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)>0){
-                bounceAngle=0;
+                bounceAngle=(120/180)*PI;
             }
             else if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)<0){
-                bounceAngle=0;
+                bounceAngle=(240/180)*PI;
             }
             else if (ball.centerY<Object.centerY){
                 bounceAngle=2*PI;
@@ -338,6 +339,7 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& c
     else if(Object.objectType==2)
     {
        if (sqrt(pow(ball.centerY-Object.centerY,2)+pow(ball.centerX-Object.centerX,2))<=gSMALL_BALL_RADIUS+gOBJECT_BALL_RADIUS){
+           bounceAngle=0;
            collide=true;
        }
     }
