@@ -317,7 +317,6 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& c
     }
     else if(Object.objectType==1)
     {
-<<<<<<< HEAD
             double k1=-sqrt(3);
             double k2=sqrt(3);
             double b1, b2;
@@ -336,26 +335,6 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& c
                 bounceAngle=2*PI;
             }
         }
-=======
-        int centerY=Object.centerY-gTRIANGLE_HIEHGT/2;
-        int k1,b1,k2,b2;
-        k1=round(gTRIANGLE_HIEHGT/(Object.centerX-(Object.centerX-23)));
-        k2=round(gTRIANGLE_HIEHGT/((Object.centerX+23)-Object.centerX));
-        b1=round(static_cast<double>(centerY)+(Object.centerX-23)*k1-2*gSMALL_BALL_RADIUS);
-        b1=round(static_cast<double>(centerY)+(Object.center)*k2-2*gSMALL_BALL_RADIUS);
-        if (((centerY-ball.centerY)/(Object.centerX-ball.centerX)<0)&&ball.centerX*k2+b2-ball.centerY<=2*gSMALL_BALL_RADIUS&&ball.centerY<centerY){
-            collide=true;
-        }
-        else if (((centerY-ball.centerY)/(Object.centerX-ball.centerX)>0)&&ball.centerX*k1+b1-ball.centerY<=2*gSMALL_BALL_RADIUS&&ball.centerY<centerY){
-            collide=true;
-        }
-        else if (ball.centerY>centerY&&ball.centerY-centerY==gSMALL_BALL_RADIUS){
-            collide=true;
-        }
-        
-        
-    }
->>>>>>> ea0058a40646b7a7036bfdf56d9fc95553f945b4
     else if(Object.objectType==2)
     {
        if (sqrt(pow(ball.centerY-Object.centerY,2)+pow(ball.centerX-Object.centerX,2))<=gSMALL_BALL_RADIUS+gOBJECT_BALL_RADIUS){
