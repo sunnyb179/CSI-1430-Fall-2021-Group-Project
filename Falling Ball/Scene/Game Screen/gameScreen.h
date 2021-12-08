@@ -23,8 +23,7 @@ fallingBall newBall();
 
 void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plotter& screen);
 
-bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle);
-
+bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& correctCenterX,int& correctCenterY);
 
 
 #endif /* gameScreen_h */

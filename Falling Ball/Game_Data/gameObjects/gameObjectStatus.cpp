@@ -37,4 +37,9 @@ void PositionStatus::drawObject(SDL_Plotter& screen){
     else if(objectType==3){
         drawBallAdder(centerX,centerY,screen);
     }
+    
+    if(objectType!=-1&&objectType!=3)
+    {
+        plotChar(centerX-10, centerY-10, static_cast<char>(objectLife)+'0', 4, screen);
+    }
 }

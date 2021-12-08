@@ -83,3 +83,57 @@ void drawBallAdder(int centerX,int centerY,SDL_Plotter& screen){
     drawCircle(centerX,centerY,round(gBAll_ADDER_RADIUS*0.9),gBACKGROUND_COLOR_R,gBACKGROUND_COLOR_G,gBACKGROUND_COLOR_B,screen);
     drawCircle(centerX,centerY,round(gBAll_ADDER_RADIUS*0.6),gBAll_ADDER_R,gBAll_ADDER_R,gBAll_ADDER_R,screen);
 }
+
+void plotChar(int X,int Y,char goal,int fontSize,SDL_Plotter& screen){
+    string lineSkipping;
+    ifstream inputFile;
+    char reading;
+    vector<char> dictionary;
+    int numSkipLine=6;
+    
+    inputFile.open("digit.txt");
+    inputFile>>reading;
+    while(reading!='\n')
+    {
+        dictionary.push_back(reading);
+        reading=inputFile.get();
+    }
+    
+    for(int i=0;i<dictionary.size();i++)
+    {
+        if(dictionary[i]==goal)
+        {
+            numSkipLine=(i)*6+1;
+            break;
+        }
+    }
+    for(int i=0;i<numSkipLine;i++)
+    {
+        getline(inputFile,lineSkipping);
+    }
+    
+    for(int i=0;i<5;i++)
+    {
+        for(int ii=0;ii<5;ii++)
+        {
+            int read;
+            inputFile>>read;
+            if(read==1)
+            {
+                drawRectangle(X+ii*fontSize, Y+i*fontSize, fontSize/2, fontSize/2, 255, 255, 255, screen);
+            }
+        }
+    }
+    inputFile.close();
+}
+
+
+
+
+
+void plotString(char text[],int numberOfChar,int fontSize,int X,int Y,int R,int G,int B,SDL_Plotter& screen){
+    for(int i=0;i<numberOfChar;i++)
+    {
+        plotChar(X+i*5*fontSize+fontSize/2,Y,text[i],fontSize,screen);
+    }
+}

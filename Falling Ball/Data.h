@@ -39,12 +39,14 @@ const int gOBJECT_COLUMN=7;
 const int gOBJECT_ROW_SAPERATION=70;
 const int gOBJECT_SHIFT=14;
 const int gOBJECT_GENERATE_INITIAL_POSSIBILITY=50; //out of 100 percent
-const int gBAll_ADDER_INITIAL_POSSIBILITY=30; //out of 100 percent
+const int gBAll_ADDER_INITIAL_POSSIBILITY=50; //out of 100 percent
 
 const int gSTART_Height=50;
-const int gSTART_SPEED=5;//pixel/second
-const double gGRAVITY_ACELERATION=0.05;//pixel/second^2
+const int gSTART_SPEED=10;//pixel/second
+const double gGRAVITY_ACELERATION=0.5;//pixel/second^2
+const double gBounce_ACELERATION_PERCENTAGE=0.7;
 const int gBALL_SHOOT_GAP=10;
+
 
 const int gSMALL_BAll_R=255;
 const int gSMALL_BAll_G=255;

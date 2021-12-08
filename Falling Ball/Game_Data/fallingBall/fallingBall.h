@@ -8,8 +8,10 @@
 #ifndef fallingBall_h
 #define fallingBall_h
 
+#include <cmath>
 #include "Objects.h"
 #include "Data.h"
+
 
 struct fallingBall{
     double centerX=WINDOW_X_SIZE/2;
@@ -17,6 +19,8 @@ struct fallingBall{
     double volcityY;
     double volcityX;
     void drawBall(SDL_Plotter& screen);
+    double totalVolcity();
+    double getVolcityAngle();
 };
 
 #endif /* fallingBall_h */

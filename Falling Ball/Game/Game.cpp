@@ -9,6 +9,7 @@
 
 
 void game::init(SDL_Plotter& screen){
+    screen.initSound("Nyan Cat.wav");
     gameOverStatus=false;
     currentScene=0;
 }

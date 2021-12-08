@@ -125,18 +125,36 @@ int gameScreen(SDL_Plotter& screen){
                         allBallOnScreen[i].volcityY*=-1;
                     }
                     
-                    //HERE IS TESTING FOR OBJECT COLLOSION//////////////
+                    
+                    //Gravity
+                    allBallOnScreen[i].volcityY+=gGRAVITY_ACELERATION;
+                    
+                    //Position
+                    allBallOnScreen[i].centerY+=allBallOnScreen[i].volcityY;
+                    allBallOnScreen[i].centerX+=allBallOnScreen[i].volcityX;
+                    
+                    if(allBallOnScreen[i].centerY-gSMALL_BALL_RADIUS>WINDOW_Y_SIZE)
+                    {
+                        swap(allBallOnScreen[i],allBallOnScreen[currentBallAmount-1]);
+                        swap(allBallOnScreen[currentBallAmount-1],allBallOnScreen[fallingBallAmount-ballOut-1]);
+                        currentBallAmount--;
+                        ballOut++;
+                    }
+                    
+                    //OBJECT COLLOSION//////////////
                     for(int ii=0;ii<gOBJECT_COLUMN;ii++)
                     {
                         for(int iii=0;iii<gOBJECT_ROW;iii++)
                         {
                             double bounceAngle=INFINITY;
-                            if(isCollide(allBallOnScreen[i],gameObejct[ii][iii],bounceAngle))
+                            int correctCenterX=allBallOnScreen[i].centerX,correctCenterY=allBallOnScreen[i].centerY;
+                            
+                            if(isCollide(allBallOnScreen[i],gameObejct[ii][iii],bounceAngle,correctCenterX,correctCenterY))
                             {
                                 
                                 
-                                
-                                
+                                allBallOnScreen[i].centerX=correctCenterX;
+                                allBallOnScreen[i].centerY=correctCenterY;
                                 gameObejct[ii][iii].objectLife--;
                                 if(gameObejct[ii][iii].objectLife==0)
                                 {
@@ -154,13 +172,21 @@ int gameScreen(SDL_Plotter& screen){
                                 else
                                 {
                                     currentGameScore++;
-                                    if(bounceAngle==90||bounceAngle==270)
+                                    if(bounceAngle==PI/2||bounceAngle==PI/2*3)
                                     {
+                                        allBallOnScreen[i].volcityX*=gBounce_ACELERATION_PERCENTAGE;
                                         allBallOnScreen[i].volcityX*=-1;
+                                    }
+                                    else if(bounceAngle==0||bounceAngle==PI)
+                                    {
+                                        allBallOnScreen[i].volcityY*=gBounce_ACELERATION_PERCENTAGE;
+                                        allBallOnScreen[i].volcityY*=-1;
                                     }
                                     else
                                     {
-                                        allBallOnScreen[i].volcityY*=-1;
+                                        double angle=2*bounceAngle-allBallOnScreen[i].getVolcityAngle()+PI;
+                                        allBallOnScreen[i].volcityX*=sin(angle)*gBounce_ACELERATION_PERCENTAGE;
+                                        allBallOnScreen[i].volcityY*=cos(angle)*gBounce_ACELERATION_PERCENTAGE;
                                     }
                                     //HERE
                                 }
@@ -168,22 +194,7 @@ int gameScreen(SDL_Plotter& screen){
                             }
                         }
                     }
-                    //HERE IS TESTING FOR OBJECT COLLOSION//////////////
-                    
-                    //Gravity
-                    allBallOnScreen[i].volcityY+=gGRAVITY_ACELERATION;
-                    
-                    //Position
-                    allBallOnScreen[i].centerY+=allBallOnScreen[i].volcityY;
-                    allBallOnScreen[i].centerX+=allBallOnScreen[i].volcityX;
-                    
-                    if(allBallOnScreen[i].centerY-gSMALL_BALL_RADIUS>WINDOW_Y_SIZE)
-                    {
-                        swap(allBallOnScreen[i],allBallOnScreen[currentBallAmount-1]);
-                        swap(allBallOnScreen[currentBallAmount-1],allBallOnScreen[fallingBallAmount-ballOut-1]);
-                        currentBallAmount--;
-                        ballOut++;
-                    }
+                    //OBJECT COLLOSION END//////////////
                 }
                 
                 //Paint the next frame to screen
@@ -232,7 +243,7 @@ PositionStatus getRandomlizedObject(int i,int Objectshift,int currentRowAmount){
     PositionStatus newObeject;
     if((rand()%100)+1<=gOBJECT_GENERATE_INITIAL_POSSIBILITY)
     {
-        newObeject.objectType=rand()%3;
+        newObeject.objectType=rand()%2;
         newObeject.objectLife=rand()%(currentRowAmount*2)+1; //Change later, Ramdomlize the life
         newObeject.centerX=(WINDOW_X_SIZE/(gOBJECT_ROW+1))*(i+1)+Objectshift;
         newObeject.centerY=WINDOW_Y_SIZE-(WINDOW_Y_SIZE-100)/gOBJECT_COLUMN;
@@ -264,7 +275,7 @@ void printObjects(PositionStatus gameObejct[gOBJECT_COLUMN][gOBJECT_ROW],SDL_Plo
     }
 }
 
-bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle){
+bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle,int& correctCenterX,int& correctCenterY){
     bool collide=false;
     if(Object.objectType==0)
     {
@@ -279,44 +290,63 @@ bool isCollide(fallingBall ball,PositionStatus Object,double& bounceAngle){
         Bbottom=ball.centerY+gSMALL_BALL_RADIUS;
         Bleft=ball.centerX-gSMALL_BALL_RADIUS;
         Bright=ball.centerX+gSMALL_BALL_RADIUS;
-        if(Btop>=Otop&&ball.centerX<Oright&&ball.centerX>Oleft&&ball.centerY<Object.centerY)
+        if(Bbottom>=Otop&&ball.centerX<Oright&&ball.centerX>Oleft&&ball.centerY<Object.centerY)
         {
-            cout<<"TOP ";
+            correctCenterY=static_cast<double>(Otop-gSMALL_BALL_RADIUS);
             collide=true;
             bounceAngle=0;
         }
-        else if(Bleft>=Oleft&&ball.centerY<Obottom&&ball.centerY>Otop&&ball.centerX<Object.centerX)
+        else if(Bright>=Oleft&&ball.centerY<Obottom&&ball.centerY>Otop&&ball.centerX<Object.centerX)
         {
-            cout<<"Left ";
+            correctCenterX=static_cast<double>(Oleft-gSMALL_BALL_RADIUS);
             collide=true;
-            bounceAngle=90;
+            bounceAngle=PI/2;
         }
-        else if(Bright<=Oright&&ball.centerY<Obottom&&ball.centerY>Otop&&ball.centerX>Object.centerX)
+        else if(Bleft<=Oright&&ball.centerY<Obottom&&ball.centerY>Otop&&ball.centerX>Object.centerX)
         {
-            cout<<"RIGHT ";
+            correctCenterX=static_cast<double>(Oright+gSMALL_BALL_RADIUS);
             collide=true;
-            bounceAngle=270;
+            bounceAngle=PI/2*3;
         }
-        else if(Bbottom<=Obottom&&ball.centerX<Oright&&ball.centerX>Oleft&&ball.centerY>Object.centerY)
+        else if(Btop<=Obottom&&ball.centerX<Oright&&ball.centerX>Oleft&&ball.centerY>Object.centerY)
         {
-            cout<<"DOWN ";
+            correctCenterY=static_cast<double>(Obottom+gSMALL_BALL_RADIUS);
             collide=true;
-            bounceAngle=180;
+            bounceAngle=PI;
         }
     }
     else if(Object.objectType==1)
     {
-        
-    }
+            double k1=-sqrt(3);
+            double k2=sqrt(3);
+            double b1, b2;
+            b1=static_cast<double>(Object.centerY+gTRIANGLE_HIEHGT)-k1*(static_cast<double>(Object.centerX));
+            b2=static_cast<double>(Object.centerY+gTRIANGLE_HIEHGT)-k2*(static_cast<double>(Object.centerX));
+            if (ball.centerX*k1+b1+2*gSMALL_BALL_RADIUS>=ball.centerY&&ball.centerX*k2+b2+2*gSMALL_BALL_RADIUS>=ball.centerY&&ball.centerY>Object.centerY-gSMALL_BALL_RADIUS){
+                collide=true;
+            }
+            if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)>0){
+                bounceAngle=0;
+            }
+            else if ((ball.centerY-Object.centerY)/(ball.centerX-Object.centerX)<0){
+                bounceAngle=0;
+            }
+            else if (ball.centerY<Object.centerY){
+                bounceAngle=2*PI;
+            }
+        }
     else if(Object.objectType==2)
     {
-        
+       if (sqrt(pow(ball.centerY-Object.centerY,2)+pow(ball.centerX-Object.centerX,2))<=gSMALL_BALL_RADIUS+gOBJECT_BALL_RADIUS){
+           collide=true;
+       }
     }
     else if(Object.objectType==3)
     {
         double distance=sqrt(pow(round(ball.centerX)-Object.centerX,2)+pow(round(ball.centerY)-Object.centerY,2));
         if(distance<gSMALL_BALL_RADIUS+gBAll_ADDER_HITBOXRAD)
         {
+            
             collide=true;
         }
     }

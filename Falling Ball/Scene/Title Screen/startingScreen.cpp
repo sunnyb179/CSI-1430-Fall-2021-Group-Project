@@ -16,6 +16,9 @@ int startingScreen(SDL_Plotter& screen){
     drawBackground(WINDOW_X_SIZE,WINDOW_Y_SIZE,sBACKGROUND_COLOR_R,sBACKGROUND_COLOR_G,sBACKGROUND_COLOR_B,screen);
     drawButton(sGAME_BUTTON_CENTER_X,sGAME_BUTTON_CENTER_Y,sGAME_BUTTON_SIZE_X,sGAME_BUTTON_SIZE_Y,sGAME_BUTTON_COLOR_R,sGAME_BUTTON_COLOR_G,sGAME_BUTTON_COLOR_B, screen);
     
+    char test[100]="falling",test2[100]="ball";
+    plotString(test, 7, 6, 20, 100, 255, 255, 255, screen);
+    plotString(test2, 4, 6, 200, 150, 255, 255, 255, screen);
     
     screen.update();
     
@@ -36,8 +39,7 @@ int startingScreen(SDL_Plotter& screen){
         {
             if(mouseX<sGAME_BUTTON_CENTER_X+sGAME_BUTTON_SIZE_X&&mouseX>sGAME_BUTTON_CENTER_X-sGAME_BUTTON_SIZE_X&&mouseY<sGAME_BUTTON_CENTER_Y+sGAME_BUTTON_SIZE_Y&&mouseY>sGAME_BUTTON_CENTER_Y-sGAME_BUTTON_SIZE_Y)
             {
-                screen.initSound("mixkit-arcade-game-opener-222.wav");
-                screen.playSound("mixkit-arcade-game-opener-222.wav");
+                screen.playSound("Nyan Cat.wav");
                 notSelect=false;
                 nextScreen=1;
             }
