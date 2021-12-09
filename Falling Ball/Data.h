@@ -1,12 +1,16 @@
 /*
 * Author: Zhongbo Sun
+          Leyang Zhou
+          Shaoyu Chen
+          Yian Ge
+          Jake Caraway
 * Assignment Title: Falling Ball
 * File Name: Data.h
 * Assignment Description: This file contains and organizes the required
   constants for the
 * Due Date: 12/08/21
 * Date Created: 11/10/21
-* Date Last Modified: 12/08/21 - 5:35pm
+* Date Last Modified: 12/08/21 - 8:18pm
 */
 
 #ifndef Data_h
