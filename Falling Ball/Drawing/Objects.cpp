@@ -1,9 +1,16 @@
-//
-//  Objects.cpp
-//  Falling Ball
-//
-//  Created by Zhongbo Sun on 11/10/21.
-//
+/*
+* Author: Zhongbo Sun
+          Leyang Zhou
+          Shaoyu Chen
+          Yian Ge
+          Jake Caraway
+* Assignment Title: Falling Ball
+* File Name: Objects.cpp
+* Assignment Description: This file contains and organizes the required constants for the
+* Due Date: 12/08/21
+* Date Created: 11/10/21
+* Date Last Modified: 12/08/21 - 8:20pm
+*/
 
 #include "Objects.h"
 
@@ -13,6 +20,7 @@ void plotPoint(int X,int Y,int R,int G,int B,SDL_Plotter& screen){
         screen.plotPixel(X,Y,R,G,B);
     }
 }
+
 void drawRectangle(int centerX,int centerY,int sizeX,int sizeY,int R,int G,int B,SDL_Plotter& screen){
     for(int x=centerX-sizeX;x<centerX+sizeX;x++)
     {
