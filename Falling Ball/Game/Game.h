@@ -1,9 +1,16 @@
-// Authors: Zhongbo Sun,
-// Assignment Title: Group project
-// Assignment Description: Game: Falling ball
-// Due Date: 12/8/2020
-// Date Created: 11/10/2020
-// Date Last Modified: 11/10/2020
+/*
+* Author: Zhongbo Sun
+          Leyang Zhou
+          Shaoyu Chen
+          Yian Ge
+          Jake Caraway
+* Assignment Title: Falling Ball
+* File Name: Game.h
+* Assignment Description: This file contains and organizes the required constants for the
+* Due Date: 12/08/21
+* Date Created: 11/10/21
+* Date Last Modified: 12/08/21 - 8:31pm
+*/
 
 #ifndef Game_h
 #define Game_h
